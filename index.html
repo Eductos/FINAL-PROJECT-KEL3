@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPro — Portal Belajar & Produktivitas (Kelompok 3)</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- HEADER & NAVBAR RESPONSIF (ALTHA) -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="brand" data-target="home">
+        <div class="brand-icon">⚡</div>
+        <span>Edu<span class="brand-accent">Pro</span></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#home" class="nav-link active" data-target="home">🏠 Beranda &amp; Katalog</a></li>
+          <li><a href="#quiz" class="nav-link" data-target="quiz">🧠 Mini Quiz</a></li>
+          <li><a href="#tracker" class="nav-link" data-target="tracker">📊 Study Tracker &amp; Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         HALAMAN 1: HOME & KATALOG KELAS (ALTHA)
+         ========================================== -->
+    <section id="home" class="page-section active">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-badge">🚀 Platform Edukasi &amp; Produktivitas Gen-Z</div>
+          <h1>Tingkatkan Skill &amp; Atur Target Belajarmu Lebih Seru</h1>
+          <p>Akses materi pilihan dari pemrograman hingga ekstrakurikuler, uji kemampuan lewat kuis interaktif, dan pantau target harianmu dengan mudah.</p>
+          <div class="hero-actions">
+            <button class="btn btn-white" id="btnExploreClasses">✨ Jelajahi Katalog</button>
+            <button class="btn btn-outline-white" data-nav="quiz">🎮 Mulai Mini Quiz</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistik -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <h3>24+</h3>
+          <p>Modul &amp; Ekskul</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔥</div>
+          <h3>1.250+</h3>
+          <p>Siswa Aktif</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <h3>98%</h3>
+          <p>Tingkat Sukses</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <h3>4.9/5</h3>
+          <p>Rating Portal</p>
+        </div>
+      </div>
+
+      <!-- Katalog Materi & Ekskul -->
+      <div id="katalog-area">
+        <div class="section-header">
+          <h2>Katalog Materi &amp; Ekstrakurikuler</h2>
+          <p>Pilih kategori di bawah ini untuk memfilter kelas secara instan tanpa reload halaman.</p>
+        </div>
+
+        <div class="category-tabs" id="categoryTabs">
+          <button class="tab-btn active" data-category="all">✨ Semua Kategori</button>
+          <button class="tab-btn" data-category="pemrograman">💻 Pemrograman &amp; IT</button>
+          <button class="tab-btn" data-category="sains">🔬 Sains &amp; Matematika</button>
+          <button class="tab-btn" data-category="ekskul">🎨 Bahasa &amp; Ekskul</button>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+          <!-- Kartu kelas dirender via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         HALAMAN 2: MINI QUIZ INTERAKTIF (GHASSAN)
+         ========================================== -->
+    <section id="quiz" class="page-section">
+      <div class="section-header">
+        <h2>Mini Quiz Pengetahuan Umum &amp; Logika</h2>
+        <p>Uji pemahamanmu melalui 6 soal pilihan ganda interaktif dengan sistem evaluasi otomatis.</p>
+      </div>
+
+      <div class="quiz-wrapper">
+        <div class="quiz-card" id="quizContainer">
+          <div class="quiz-header">
+            <span class="quiz-progress-text" id="quizProgressText">Soal 1 dari 6</span>
+            <span class="quiz-score-badge" id="quizLiveScore">Skor: 0</span>
+          </div>
+
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="quizProgressBar"></div>
+          </div>
+
+          <h3 class="question-text" id="questionText">Memuat pertanyaan...</h3>
+
+          <div class="options-list" id="optionsList">
+            <!-- Opsi pilihan ganda dirender via JS -->
+          </div>
+
+          <div class="feedback-box" id="quizFeedback"></div>
+
+          <div class="quiz-footer">
+            <span id="quizHint" style="font-size: 0.85rem; color: var(--text-muted);">💡 Pilih salah satu jawaban terbaik</span>
+            <button class="btn btn-primary" id="nextQuestionBtn" disabled>Soal Berikutnya →</button>
+          </div>
+        </div>
+
+        <!-- Hasil Akhir Quiz -->
+        <div class="quiz-card quiz-result" id="quizResultContainer" style="display: none;">
+          <h2>🎉 Evaluasi Selesai!</h2>
+          <div class="result-circle">
+            <span id="finalScoreValue">0%</span>
+            <small>Skor Akhir</small>
+          </div>
+          <div class="result-grade" id="resultGrade">Predikat</div>
+          <p class="result-message" id="resultMessage">Pesan evaluasi...</p>
+          <button class="btn btn-primary" id="restartQuizBtn">🔄 Coba Ulangi Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         HALAMAN 3: STUDY TRACKER & KONTAK (FAIRUZ)
+         ========================================== -->
+    <section id="tracker" class="page-section">
+      <div class="section-header">
+        <h2>Study Tracker &amp; Layanan Konsultasi</h2>
+        <p>Atur target belajar harianmu (tersimpan di browser) atau kirim pertanyaan ke mentor kami.</p>
+      </div>
+
+      <div class="tracker-contact-grid">
+        <!-- Kolom Kiri: Study Tracker -->
+        <div class="panel-card">
+          <div class="panel-title">
+            <h3>✅ Study Tracker Harian</h3>
+            <span class="task-counter" id="taskCounter">0/0 Selesai</span>
+          </div>
+
+          <form class="todo-form" id="todoForm" novalidate>
+            <input type="text" id="todoInput" class="form-control" placeholder="Tulis target belajar (misal: Latihan CSS Grid)...">
+            <select id="todoPriority" class="form-control priority-select">
+              <option value="Tinggi">🔴 Tinggi</option>
+              <option value="Sedang" selected>🟡 Sedang</option>
+              <option value="Rendah">🟢 Rendah</option>
+            </select>
+            <button type="submit" class="btn btn-primary">+ Tambah</button>
+          </form>
+          <div class="error-msg" id="todoError" style="margin-top: -0.5rem; margin-bottom: 0.75rem;"></div>
+
+          <div class="search-box">
+            <input type="text" id="todoSearch" class="form-control" placeholder="🔍 Cari target belajarmu...">
+          </div>
+
+          <ul class="todo-list" id="todoList">
+            <!-- Daftar tugas dirender via JS -->
+          </ul>
+        </div>
+
+        <!-- Kolom Kanan: Form Kontak -->
+        <div class="panel-card">
+          <div class="panel-title">
+            <h3>📩 Hubungi Mentor</h3>
+          </div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="contactName">Nama Lengkap *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Masukkan nama lengkapmu">
+              <span class="error-msg" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Alamat Email *</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="contoh@siswa.sch.id">
+              <span class="error-msg" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactTopic">Topik Pertanyaan *</label>
+              <select id="contactTopic" class="form-control">
+                <option value="">-- Pilih Topik --</option>
+                <option value="materi">Konsultasi Materi &amp; Kelas</option>
+                <option value="quiz">Pertanyaan Seputar Mini Quiz</option>
+                <option value="teknis">Kendala Teknis Portal</option>
+              </select>
+              <span class="error-msg" id="topicError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Pesan atau Pertanyaan *</label>
+              <textarea id="contactMessage" rows="4" class="form-control" placeholder="Tuliskan detail pertanyaan minimal 10 karakter..."></textarea>
+              <span class="error-msg" id="messageError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">🚀 Kirim Pesan Sekarang</button>
+
+            <div class="success-banner" id="contactSuccess">
+              ✨ Yeay! Pesanmu berhasil terkirim dan akan segera dibalas oleh tim mentor Kelompok 3.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <p><strong>EduPro — Portal Edukasi &amp; Produktivitas</strong></p>
+      <p>Dikembangkan oleh <strong>Kelompok 3</strong>: Altha (Landing &amp; Katalog), Ghassan (Mini Quiz), &amp; Fairuz (Study Tracker &amp; Kontak).</p>
+      <p style="margin-top: 0.75rem; font-size: 0.82rem; opacity: 0.8;">&copy; 2026 Kelompok 3 Web Project. Dibangun dengan HTML5, CSS3 Modern &amp; Vanilla JS.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
